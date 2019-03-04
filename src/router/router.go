@@ -47,7 +47,7 @@ func SetupRouter(cfg utilities.Configuration) *gin.Engine {
 
 	// Sample endpoints
 	sample := new(controllers.SampleController)
-	sampleRoutes := router.Group("/sample")
+	sampleRoutes := router.Group("/samples")
 	{
 		sampleRoutes.GET("/", sample.List)
 		sampleRoutes.GET("/:id", sample.Read)

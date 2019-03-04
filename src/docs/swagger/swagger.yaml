@@ -49,4 +49,55 @@ paths:
       summary: Server Health
       tags:
       - Health
+  /samples:
+    delete:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200": {}
+      summary: Delete removes a sample by id
+      tags:
+      - Sample
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200": {}
+      tags:
+      - Sample
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200": {}
+      summary: Create stores a sample model
+      tags:
+      - Sample
+    put:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200": {}
+      summary: Update updates a sample model
+      tags:
+      - Sample
+  /samples/:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200": {}
+      summary: Read returns a single sample by id
+      tags:
+      - Sample
 swagger: "2.0"

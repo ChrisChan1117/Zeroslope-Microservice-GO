@@ -57,6 +57,84 @@
                     }
                 }
             }
+        },
+        "/samples": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Sample"
+                ],
+                "responses": {
+                    "200": {}
+                }
+            },
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Update updates a sample model",
+                "responses": {
+                    "200": {}
+                }
+            },
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Create stores a sample model",
+                "responses": {
+                    "200": {}
+                }
+            },
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Delete removes a sample by id",
+                "responses": {
+                    "200": {}
+                }
+            }
+        },
+        "/samples/": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Read returns a single sample by id",
+                "responses": {
+                    "200": {}
+                }
+            }
         }
     },
     "definitions": {
