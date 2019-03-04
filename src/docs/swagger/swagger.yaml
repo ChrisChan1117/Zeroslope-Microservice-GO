@@ -1,0 +1,52 @@
+basePath: '{{.BasePath}}'
+definitions:
+  models.AuthToken:
+    properties:
+      access_token:
+        type: string
+      expires_in:
+        type: integer
+      token_type:
+        type: string
+    type: object
+host: '{{.Host}}'
+info:
+  contact: {}
+  description: Zeroslope microservice architecture written in go
+  license: {}
+  title: ZeroSlope API
+  version: "1.0"
+paths:
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Generates a JWT Token for use with Authorized endpoints
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.AuthToken'
+            type: object
+        "401": {}
+      summary: Login generates a JWT token
+      tags:
+      - Authentication
+  /health:
+    get:
+      consumes:
+      - application/json
+      description: Returns a message if the service is working correctly
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: The service is working.
+          schema:
+            type: string
+      summary: Server Health
+      tags:
+      - Health
+swagger: "2.0"

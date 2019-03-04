@@ -12,7 +12,7 @@ import (
 // @description Zeroslope microservice architecture written in go
 func main() {
 	fmt.Println(">> Loading configuration ...")
-	cfg := utilities.LoadConfigFromPath("src/config.yaml")
+	cfg := utilities.LoadConfigFromPath("config.yaml")
 
 	fmt.Println(">> Loading routes ...")
 	router := router.SetupRouter(cfg)

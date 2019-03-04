@@ -14,7 +14,6 @@ server:
   write_timeout_seconds: 5
 
 jwt:
-  key: zeroslope-svc
   secret: A14E45A7-D02B-4ADA-94BC-66DCBFD3181E
   duration_minutes: 15
 

@@ -1,7 +1,7 @@
 package middlewares
 
 import (
-	"strings"
+	"net/http"
 
 	"../utilities"
 	"github.com/gin-gonic/gin"
@@ -11,21 +11,13 @@ import (
 func AuthMiddleware(cfg utilities.Configuration) gin.HandlerFunc {
 	return func(c *gin.Context) {
 
-		reqKey := c.Request.Header.Get("X-Auth-Key")
-		reqSecret := c.Request.Header.Get("X-Auth-Secret")
+		authHeader := c.GetHeader("Authorization")
 
-		var key string
-		var secret string
-		if key = cfg.JWT.Key; len(strings.TrimSpace(key)) == 0 {
-			c.AbortWithStatus(500)
-		}
-		if secret = cfg.JWT.Secret; len(strings.TrimSpace(secret)) == 0 {
-			c.AbortWithStatus(401)
-		}
-		if key != reqKey || secret != reqSecret {
-			c.AbortWithStatus(401)
+		if len(authHeader) == 0 {
+			c.AbortWithStatus(http.StatusUnauthorized)
 			return
 		}
+
 		c.Next()
 	}
 }

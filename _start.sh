@@ -1,3 +1,4 @@
 #!/bin/bash
-glide update
+glide install
+cd src; swag init; cd ..
 go run src/main.go

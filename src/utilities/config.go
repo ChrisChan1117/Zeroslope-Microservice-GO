@@ -62,7 +62,6 @@ type Server struct {
 // JWT holds data necessery for JWT configuration
 type JWT struct {
 	Secret string `yaml:"secret,omitempty"`
-	Key    string `yaml:"key,omitempty"`
 }
 
 // Application holds application configuration details

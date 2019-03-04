@@ -5,7 +5,12 @@ import (
 	"../middlewares"
 	"../utilities"
 
+	// Use the swagger docs
+	_ "../docs"
+
 	"github.com/gin-gonic/gin"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 // SetupRouter creaes a router using middleware and controllers
@@ -15,9 +20,11 @@ func SetupRouter(cfg utilities.Configuration) *gin.Engine {
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
 
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
 	// Redirect the root to swagger
 	router.GET("/", func(c *gin.Context) {
-		c.Request.URL.Path = "/swagger"
+		c.Request.URL.Path = "/swagger/index.html"
 		router.HandleContext(c)
 	})
 

@@ -3,6 +3,9 @@ This is the zeroslope microservice architecture using GO.
 
 ## Technologies
 Here is a list of the technologies used in this project:
+* We use GLIDE for package management.
+* We use SWAG for swagger generation.
+* We use DLV for Debugging in VSCODE
 * We use GIN for http routing.
 * We use VEGETA for load testing.
 * We use GORM for our ORM layer.
@@ -23,19 +26,19 @@ Here is an overall layout of what endpoints come with this architecture:
 
 
 ## Development
-
+Currently I write my golang in VSCODE and use the following commands:
 
 ### Installing dependencies
 ```bash
-dep ensure
+glide install
+```
+
+### Updating swagger docs
+```
+cd src; swag init; cd ..
 ```
 
 ### Running locally
 ```
 go run main.go
-```
-
-### Running in docker
-```
-docker-compose up
 ```
