@@ -23,9 +23,15 @@ type AuthController struct{}
 // @Router /auth/login [post]
 func (h AuthController) Login(c *gin.Context) {
 
-	expiresAt := time.Now().Add(time.Minute * 1).Unix()
+	// Establish a 30 minute expiration
+	expiresAt := time.Now().Add(time.Minute * 30).Unix()
 
 	token := jwt.New(jwt.SigningMethodHS256)
+
+	token.Claims = jwt.MapClaims{
+		"exp": expiresAt,
+		"iat": time.Now().Unix(),
+	}
 
 	tokenString, err := token.SignedString([]byte("A14E45A7-D02B-4ADA-94BC-66DCBFD3181E"))
 	if err != nil {
