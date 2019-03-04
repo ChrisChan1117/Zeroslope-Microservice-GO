@@ -1,0 +1,22 @@
+database:
+  log_queries: true
+  timeout_seconds: 30
+  user: postgres
+  password: P4ssw0rd!
+  host: localhost
+  port: 5432
+  database: zeroslope
+
+server:
+  port: :8080
+  debug: true
+  read_timeout_seconds: 10
+  write_timeout_seconds: 5
+
+jwt:
+  key: zeroslope-svc
+  secret: A14E45A7-D02B-4ADA-94BC-66DCBFD3181E
+  duration_minutes: 15
+
+application:
+  swagger_ui_path: src/assets/swaggerui
