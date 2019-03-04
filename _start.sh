@@ -1,3 +1,3 @@
 #!/bin/bash
-dep ensure
+glide update
 go run src/main.go

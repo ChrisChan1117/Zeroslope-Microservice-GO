@@ -6,11 +6,6 @@ import (
 	"../utilities"
 
 	"github.com/gin-gonic/gin"
-	"github.com/swaggo/gin-swagger"
-	"github.com/swaggo/gin-swagger/swaggerFiles"
-
-	// Import the docs
-	_ "../docs"
 )
 
 // SetupRouter creaes a router using middleware and controllers
@@ -19,9 +14,6 @@ func SetupRouter(cfg utilities.Configuration) *gin.Engine {
 	router := gin.New()
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
-
-	// Expose swagger
-	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	// Redirect the root to swagger
 	router.GET("/", func(c *gin.Context) {
