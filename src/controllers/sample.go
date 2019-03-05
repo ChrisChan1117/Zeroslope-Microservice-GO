@@ -9,9 +9,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type SampleController struct{}
-
 var db = database.GetDatabase()
+
+type SampleController struct{}
 
 // List shows a list of samples
 // @Summary

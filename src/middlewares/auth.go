@@ -5,13 +5,13 @@ import (
 	"net/http"
 	"strings"
 
-	"../utilities"
+	"../config"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 )
 
 // AuthMiddleware validates that you have a valid JWT token
-func AuthMiddleware(cfg utilities.Configuration) gin.HandlerFunc {
+func AuthMiddleware(cfg config.Configuration) gin.HandlerFunc {
 	return func(c *gin.Context) {
 
 		authHeader := c.GetHeader("Authorization")

@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
+	"./config"
 	"./database"
 	"./router"
-	"./utilities"
 )
 
 // @title ZeroSlope API
@@ -16,7 +16,7 @@ import (
 // @name Authorization
 func main() {
 	fmt.Println(">> Loading configuration ...")
-	cfg := utilities.LoadConfigFromPath("config.yaml")
+	cfg := config.LoadConfigFromPath("config.yaml")
 
 	fmt.Println(">> Loading routes ...")
 	router := router.SetupRouter(cfg)
@@ -30,5 +30,5 @@ func main() {
 	fmt.Println(">> Starting service ...")
 	router.Run(cfg.Server.Port)
 
-	//defer utilities.Close()
+	//defer config.Close()
 }

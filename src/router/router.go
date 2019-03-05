@@ -1,9 +1,9 @@
 package router
 
 import (
+	"../config"
 	"../controllers"
 	"../middlewares"
-	"../utilities"
 
 	// Use the swagger docs
 	_ "../docs"
@@ -14,7 +14,7 @@ import (
 )
 
 // SetupRouter creaes a router using middleware and controllers
-func SetupRouter(cfg utilities.Configuration) *gin.Engine {
+func SetupRouter(cfg config.Configuration) *gin.Engine {
 
 	router := gin.New()
 	router.Use(gin.Logger())

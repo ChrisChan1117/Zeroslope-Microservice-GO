@@ -5,8 +5,8 @@ import (
 	"log"
 	"strconv"
 
+	"../config"
 	"../models"
-	utilities "../utilities"
 	gorm "github.com/jinzhu/gorm"
 
 	// Get the guts for postgres
@@ -21,7 +21,7 @@ var db *gorm.DB
 var err error
 
 // Init creates a connection to a postgres database and returns the DB instance
-func Init(cfg utilities.Configuration) {
+func Init(cfg config.Configuration) {
 	dbinfo := fmt.Sprintf("user=%s password=%s host=%s port=%s dbname=%s sslmode=disable",
 		cfg.DB.User,
 		cfg.DB.Password,

@@ -1,9 +1,10 @@
-package utilities
+package config
 
 import (
 	"flag"
 	"fmt"
 	"io/ioutil"
+	"os"
 
 	yaml "gopkg.in/yaml.v2"
 )
@@ -30,6 +31,13 @@ func LoadConfigFromPath(pathToConfig string) Configuration {
 		panic(err.Error())
 	}
 	return *cfg
+}
+
+func getEnvironmentVariable(key, fallback string) string {
+	if value, ok := os.LookupEnv(key); ok {
+		return value
+	}
+	return fallback
 }
 
 // Configuration holds data necessery for configuring application
