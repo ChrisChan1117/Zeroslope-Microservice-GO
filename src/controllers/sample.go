@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"../database"
-	models "../models"
+	"../models"
 
 	"github.com/gin-gonic/gin"
 )
@@ -14,7 +14,7 @@ var db = database.GetDatabase()
 type SampleController struct{}
 
 // List shows a list of samples
-// @Summary
+// @Summary List shows a list of samples
 // @Tags Sample
 // @Security ApiKeyAuth
 // @Accept  json
@@ -25,7 +25,7 @@ func (h SampleController) List(c *gin.Context) {
 	var models []models.SampleModel
 	err := db.Find(&models).Error
 	if err != nil {
-		c.AbortWithStatus(500)
+		c.AbortWithStatus(http.StatusBadRequest)
 	}
 	c.JSON(http.StatusOK, models)
 }
@@ -40,9 +40,10 @@ func (h SampleController) List(c *gin.Context) {
 // @Router /samples/:id [get]
 func (h SampleController) Read(c *gin.Context) {
 	var model models.SampleModel
-	err := db.First(&model, c.Param("id")).Error
+	id := c.Params.ByName("id")
+	err := db.First(&model, id).Error
 	if err != nil {
-		c.AbortWithStatus(500)
+		c.AbortWithStatus(http.StatusBadRequest)
 	}
 	c.JSON(http.StatusOK, model)
 }
@@ -56,7 +57,13 @@ func (h SampleController) Read(c *gin.Context) {
 // @Success 200 {object} models.SampleModel
 // @Router /samples [post]
 func (h SampleController) Create(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{})
+	var model models.SampleModel
+	c.BindJSON(&model)
+	err := db.Create(&model).Error
+	if err != nil {
+		c.AbortWithStatus(http.StatusBadRequest)
+	}
+	c.JSON(http.StatusOK, model)
 }
 
 // Update updates a sample model
@@ -69,7 +76,13 @@ func (h SampleController) Create(c *gin.Context) {
 // @Success 200 {object} models.SampleModel
 // @Router /samples [put]
 func (h SampleController) Update(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{})
+	var model models.SampleModel
+	c.BindJSON(&model)
+	err := db.Update(&model).Error
+	if err != nil {
+		c.AbortWithStatus(http.StatusBadRequest)
+	}
+	c.JSON(http.StatusOK, model)
 }
 
 // Delete removes a sample by id
@@ -81,5 +94,11 @@ func (h SampleController) Update(c *gin.Context) {
 // @Success 200
 // @Router /samples [delete]
 func (h SampleController) Delete(c *gin.Context) {
+	id := c.Params.ByName("id")
+	var model models.SampleModel
+	err := db.Where("id = ?", id).Delete(&model).Error
+	if err != nil {
+		c.AbortWithStatus(http.StatusBadRequest)
+	}
 	c.JSON(http.StatusOK, gin.H{})
 }

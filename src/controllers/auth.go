@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	models "../models"
+	"../models"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
