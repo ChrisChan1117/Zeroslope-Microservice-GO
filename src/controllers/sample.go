@@ -11,6 +11,7 @@ type SampleController struct{}
 // List shows a list of samples
 // @Summary
 // @Tags Sample
+// @Security ApiKeyAuth
 // @Accept  json
 // @Produce  json
 // @Success 200
@@ -22,6 +23,7 @@ func (h SampleController) List(c *gin.Context) {
 // Read returns a single sample by id
 // @Summary Read returns a single sample by id
 // @Tags Sample
+// @Security ApiKeyAuth
 // @Accept  json
 // @Produce  json
 // @Success 200
@@ -33,6 +35,7 @@ func (h SampleController) Read(c *gin.Context) {
 // Create stores a sample model
 // @Summary Create stores a sample model
 // @Tags Sample
+// @Security ApiKeyAuth
 // @Accept  json
 // @Produce  json
 // @Success 200
@@ -44,6 +47,7 @@ func (h SampleController) Create(c *gin.Context) {
 // Update updates a sample model
 // @Summary Update updates a sample model
 // @Tags Sample
+// @Security ApiKeyAuth
 // @Accept  json
 // @Produce  json
 // @Success 200
@@ -55,6 +59,7 @@ func (h SampleController) Update(c *gin.Context) {
 // Delete removes a sample by id
 // @Summary Delete removes a sample by id
 // @Tags Sample
+// @Security ApiKeyAuth
 // @Accept  json
 // @Produce  json
 // @Success 200

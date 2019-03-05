@@ -10,6 +10,9 @@ import (
 // @title ZeroSlope API
 // @version 1.0
 // @description Zeroslope microservice architecture written in go
+// @securityDefinitions.apikey ApiKeyAuth
+// @in header
+// @name Authorization
 func main() {
 	fmt.Println(">> Loading configuration ...")
 	cfg := utilities.LoadConfigFromPath("config.yaml")

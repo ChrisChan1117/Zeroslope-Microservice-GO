@@ -3,6 +3,7 @@ package middlewares
 import (
 	"fmt"
 	"net/http"
+	"strings"
 
 	"../utilities"
 	"github.com/dgrijalva/jwt-go"
@@ -21,8 +22,9 @@ func AuthMiddleware(cfg utilities.Configuration) gin.HandlerFunc {
 			return
 		}
 
-		// Parse and validate the token.
-		token, err := jwt.Parse(authHeader, keyLookupFn)
+		// Parse and validate the token, check for Bearer and remove.
+		tokenString := strings.Replace(authHeader, "Bearer ", "", -1)
+		token, err := jwt.Parse(tokenString, keyLookupFn)
 		if err != nil {
 			c.AbortWithStatus(http.StatusUnauthorized)
 			return

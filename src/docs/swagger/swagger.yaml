@@ -57,6 +57,8 @@ paths:
       - application/json
       responses:
         "200": {}
+      security:
+      - ApiKeyAuth: []
       summary: Delete removes a sample by id
       tags:
       - Sample
@@ -67,6 +69,8 @@ paths:
       - application/json
       responses:
         "200": {}
+      security:
+      - ApiKeyAuth: []
       tags:
       - Sample
     post:
@@ -76,6 +80,8 @@ paths:
       - application/json
       responses:
         "200": {}
+      security:
+      - ApiKeyAuth: []
       summary: Create stores a sample model
       tags:
       - Sample
@@ -86,6 +92,8 @@ paths:
       - application/json
       responses:
         "200": {}
+      security:
+      - ApiKeyAuth: []
       summary: Update updates a sample model
       tags:
       - Sample
@@ -97,7 +105,14 @@ paths:
       - application/json
       responses:
         "200": {}
+      security:
+      - ApiKeyAuth: []
       summary: Read returns a single sample by id
       tags:
       - Sample
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"
