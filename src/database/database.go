@@ -1,4 +1,4 @@
-package utilities
+package database
 
 import (
 	"fmt"
@@ -6,6 +6,7 @@ import (
 	"strconv"
 
 	"../models"
+	utilities "../utilities"
 	gorm "github.com/jinzhu/gorm"
 
 	// Get the guts for postgres
@@ -20,22 +21,20 @@ var db *gorm.DB
 var err error
 
 // Init creates a connection to a postgres database and returns the DB instance
-func Init(cfg *Configuration) {
-	user := getEnvironmentVariable("PG_USER", cfg.DB.User)
-	password := getEnvironmentVariable("PG_PASSWORD", cfg.DB.Password)
-	host := getEnvironmentVariable("PG_HOST", cfg.DB.Host)
-	port := getEnvironmentVariable("PG_PORT", strconv.Itoa(cfg.DB.Port))
-	database := getEnvironmentVariable("PG_DB", cfg.DB.Database)
-
+func Init(cfg utilities.Configuration) {
 	dbinfo := fmt.Sprintf("user=%s password=%s host=%s port=%s dbname=%s sslmode=disable",
-		user,
-		password,
-		host,
-		port,
-		database,
+		cfg.DB.User,
+		cfg.DB.Password,
+		cfg.DB.Host,
+		strconv.Itoa(cfg.DB.Port),
+		cfg.DB.Database,
 	)
-
 	Connect(dbinfo)
+}
+
+// GetDatabase will return the database instance
+func GetDatabase() *gorm.DB {
+	return db
 }
 
 // Connect will connect to the database and return a DB instance
@@ -49,7 +48,7 @@ func Connect(dbinfo string) {
 }
 
 // BuildDatabase sets up the database if there are no tables
-func BuildDatabase(db *gorm.DB) {
+func BuildDatabase() {
 	if !db.HasTable(&models.SampleModel{}) {
 		err := db.CreateTable(&models.SampleModel{})
 		if err != nil {
@@ -60,6 +59,6 @@ func BuildDatabase(db *gorm.DB) {
 }
 
 // Close closes the database connection
-func Close(db *gorm.DB) {
+func Close() {
 	db.Close()
 }

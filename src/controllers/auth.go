@@ -33,6 +33,7 @@ func (h AuthController) Login(c *gin.Context) {
 		"iat": time.Now().Unix(),
 	}
 
+	// TODO: Load from config
 	tokenString, err := token.SignedString([]byte("A14E45A7-D02B-4ADA-94BC-66DCBFD3181E"))
 	if err != nil {
 		panic(err.Error())

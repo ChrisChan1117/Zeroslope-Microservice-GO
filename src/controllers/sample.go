@@ -3,10 +3,15 @@ package controllers
 import (
 	"net/http"
 
+	"../database"
+	models "../models"
+
 	"github.com/gin-gonic/gin"
 )
 
 type SampleController struct{}
+
+var db = database.GetDatabase()
 
 // List shows a list of samples
 // @Summary
@@ -17,7 +22,12 @@ type SampleController struct{}
 // @Success 200 {array} models.SampleModel
 // @Router /samples [get]
 func (h SampleController) List(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{})
+	var models []models.SampleModel
+	err := db.Find(&models).Error
+	if err != nil {
+		c.AbortWithStatus(500)
+	}
+	c.JSON(http.StatusOK, models)
 }
 
 // Read returns a single sample by id
@@ -29,7 +39,12 @@ func (h SampleController) List(c *gin.Context) {
 // @Success 200 {object} models.SampleModel
 // @Router /samples/:id [get]
 func (h SampleController) Read(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{})
+	var model models.SampleModel
+	err := db.First(&model, c.Param("id")).Error
+	if err != nil {
+		c.AbortWithStatus(500)
+	}
+	c.JSON(http.StatusOK, model)
 }
 
 // Create stores a sample model

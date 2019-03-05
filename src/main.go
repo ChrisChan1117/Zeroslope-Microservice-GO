@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"./database"
 	"./router"
 	"./utilities"
 )
@@ -20,6 +21,14 @@ func main() {
 	fmt.Println(">> Loading routes ...")
 	router := router.SetupRouter(cfg)
 
+	fmt.Println(">> Connecting to database ...")
+	database.Init(cfg)
+
+	fmt.Println(">> Setting up database ...")
+	database.BuildDatabase()
+
 	fmt.Println(">> Starting service ...")
 	router.Run(cfg.Server.Port)
+
+	//defer utilities.Close()
 }

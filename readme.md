@@ -34,15 +34,19 @@ glide install
 ```
 
 ### Updating swagger docs
-```
+```bash
 cd src; swag init; cd ..
 ```
 
 ### Running locally
-```
+```bash
 go run main.go
 ```
 
-
+### Setting up postgres in docker
+```bash
+docker run --name pgdb -p 5432:5432 -e POSTGRES_PASSWORD=P4ssw0rd! -e POSTGRES_DB=zeroslope -d postgres
+```
 
 ## Golang Dev Environment
+TBD
