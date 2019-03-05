@@ -14,7 +14,7 @@ type SampleController struct{}
 // @Security ApiKeyAuth
 // @Accept  json
 // @Produce  json
-// @Success 200
+// @Success 200 {array} models.SampleModel
 // @Router /samples [get]
 func (h SampleController) List(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{})
@@ -26,7 +26,7 @@ func (h SampleController) List(c *gin.Context) {
 // @Security ApiKeyAuth
 // @Accept  json
 // @Produce  json
-// @Success 200
+// @Success 200 {object} models.SampleModel
 // @Router /samples/:id [get]
 func (h SampleController) Read(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{})
@@ -38,7 +38,7 @@ func (h SampleController) Read(c *gin.Context) {
 // @Security ApiKeyAuth
 // @Accept  json
 // @Produce  json
-// @Success 200
+// @Success 200 {object} models.SampleModel
 // @Router /samples [post]
 func (h SampleController) Create(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{})
@@ -50,7 +50,8 @@ func (h SampleController) Create(c *gin.Context) {
 // @Security ApiKeyAuth
 // @Accept  json
 // @Produce  json
-// @Success 200
+// @Produce  json
+// @Success 200 {object} models.SampleModel
 // @Router /samples [put]
 func (h SampleController) Update(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{})

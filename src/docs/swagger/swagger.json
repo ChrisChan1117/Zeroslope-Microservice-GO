@@ -75,7 +75,15 @@
                     "Sample"
                 ],
                 "responses": {
-                    "200": {}
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.SampleModel"
+                            }
+                        }
+                    }
                 }
             },
             "put": {
@@ -88,6 +96,7 @@
                     "application/json"
                 ],
                 "produces": [
+                    "application/json",
                     "application/json"
                 ],
                 "tags": [
@@ -95,7 +104,13 @@
                 ],
                 "summary": "Update updates a sample model",
                 "responses": {
-                    "200": {}
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/models.SampleModel"
+                        }
+                    }
                 }
             },
             "post": {
@@ -115,7 +130,13 @@
                 ],
                 "summary": "Create stores a sample model",
                 "responses": {
-                    "200": {}
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/models.SampleModel"
+                        }
+                    }
                 }
             },
             "delete": {
@@ -157,7 +178,13 @@
                 ],
                 "summary": "Read returns a single sample by id",
                 "responses": {
-                    "200": {}
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/models.SampleModel"
+                        }
+                    }
                 }
             }
         }
@@ -173,6 +200,20 @@
                     "type": "integer"
                 },
                 "token_type": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.SampleModel": {
+            "type": "object",
+            "properties": {
+                "Description": {
+                    "type": "string"
+                },
+                "ID": {
+                    "type": "integer"
+                },
+                "Name": {
                     "type": "string"
                 }
             }

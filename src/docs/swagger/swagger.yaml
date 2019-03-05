@@ -9,6 +9,15 @@ definitions:
       token_type:
         type: string
     type: object
+  models.SampleModel:
+    properties:
+      Description:
+        type: string
+      ID:
+        type: integer
+      Name:
+        type: string
+    type: object
 host: '{{.Host}}'
 info:
   contact: {}
@@ -68,7 +77,12 @@ paths:
       produces:
       - application/json
       responses:
-        "200": {}
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.SampleModel'
+            type: array
       security:
       - ApiKeyAuth: []
       tags:
@@ -79,7 +93,11 @@ paths:
       produces:
       - application/json
       responses:
-        "200": {}
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.SampleModel'
+            type: object
       security:
       - ApiKeyAuth: []
       summary: Create stores a sample model
@@ -90,8 +108,13 @@ paths:
       - application/json
       produces:
       - application/json
+      - application/json
       responses:
-        "200": {}
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.SampleModel'
+            type: object
       security:
       - ApiKeyAuth: []
       summary: Update updates a sample model
@@ -104,7 +127,11 @@ paths:
       produces:
       - application/json
       responses:
-        "200": {}
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.SampleModel'
+            type: object
       security:
       - ApiKeyAuth: []
       summary: Read returns a single sample by id
