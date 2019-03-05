@@ -58,7 +58,7 @@
                 }
             }
         },
-        "/samples": {
+        "/samples/": {
             "get": {
                 "security": [
                     {
@@ -74,6 +74,7 @@
                 "tags": [
                     "Sample"
                 ],
+                "summary": "List shows a list of samples",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -96,13 +97,24 @@
                     "application/json"
                 ],
                 "produces": [
-                    "application/json",
                     "application/json"
                 ],
                 "tags": [
                     "Sample"
                 ],
                 "summary": "Update updates a sample model",
+                "parameters": [
+                    {
+                        "description": "Sample Model",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/models.SampleModel"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -129,6 +141,55 @@
                     "Sample"
                 ],
                 "summary": "Create stores a sample model",
+                "parameters": [
+                    {
+                        "description": "Sample Model",
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/models.SampleModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/models.SampleModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/samples/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Read returns a single sample by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Sample ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -155,36 +216,17 @@
                     "Sample"
                 ],
                 "summary": "Delete removes a sample by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Sample ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {}
-                }
-            }
-        },
-        "/samples/": {
-            "get": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Sample"
-                ],
-                "summary": "Read returns a single sample by id",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/models.SampleModel"
-                        }
-                    }
                 }
             }
         }

@@ -20,7 +20,7 @@ type SampleController struct{}
 // @Accept  json
 // @Produce  json
 // @Success 200 {array} models.SampleModel
-// @Router /samples [get]
+// @Router /samples/ [get]
 func (h SampleController) List(c *gin.Context) {
 	var models []models.SampleModel
 	err := db.Find(&models).Error
@@ -37,7 +37,8 @@ func (h SampleController) List(c *gin.Context) {
 // @Accept  json
 // @Produce  json
 // @Success 200 {object} models.SampleModel
-// @Router /samples/:id [get]
+// @Param id path int true "Sample ID"
+// @Router /samples/{id} [get]
 func (h SampleController) Read(c *gin.Context) {
 	var model models.SampleModel
 	id := c.Params.ByName("id")
@@ -55,7 +56,8 @@ func (h SampleController) Read(c *gin.Context) {
 // @Accept  json
 // @Produce  json
 // @Success 200 {object} models.SampleModel
-// @Router /samples [post]
+// @Param model body models.SampleModel true "Sample Model"
+// @Router /samples/ [post]
 func (h SampleController) Create(c *gin.Context) {
 	var model models.SampleModel
 	c.BindJSON(&model)
@@ -72,9 +74,9 @@ func (h SampleController) Create(c *gin.Context) {
 // @Security ApiKeyAuth
 // @Accept  json
 // @Produce  json
-// @Produce  json
 // @Success 200 {object} models.SampleModel
-// @Router /samples [put]
+// @Param model body models.SampleModel true "Sample Model"
+// @Router /samples/ [put]
 func (h SampleController) Update(c *gin.Context) {
 	var model models.SampleModel
 	c.BindJSON(&model)
@@ -92,7 +94,8 @@ func (h SampleController) Update(c *gin.Context) {
 // @Accept  json
 // @Produce  json
 // @Success 200
-// @Router /samples [delete]
+// @Param id path int true "Sample ID"
+// @Router /samples/{id} [delete]
 func (h SampleController) Delete(c *gin.Context) {
 	id := c.Params.ByName("id")
 	var model models.SampleModel

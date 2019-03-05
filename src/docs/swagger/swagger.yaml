@@ -58,19 +58,7 @@ paths:
       summary: Server Health
       tags:
       - Health
-  /samples:
-    delete:
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      responses:
-        "200": {}
-      security:
-      - ApiKeyAuth: []
-      summary: Delete removes a sample by id
-      tags:
-      - Sample
+  /samples/:
     get:
       consumes:
       - application/json
@@ -85,11 +73,20 @@ paths:
             type: array
       security:
       - ApiKeyAuth: []
+      summary: List shows a list of samples
       tags:
       - Sample
     post:
       consumes:
       - application/json
+      parameters:
+      - description: Sample Model
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/models.SampleModel'
+          type: object
       produces:
       - application/json
       responses:
@@ -106,8 +103,15 @@ paths:
     put:
       consumes:
       - application/json
+      parameters:
+      - description: Sample Model
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/models.SampleModel'
+          type: object
       produces:
-      - application/json
       - application/json
       responses:
         "200":
@@ -120,10 +124,34 @@ paths:
       summary: Update updates a sample model
       tags:
       - Sample
-  /samples/:
+  /samples/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Sample ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200": {}
+      security:
+      - ApiKeyAuth: []
+      summary: Delete removes a sample by id
+      tags:
+      - Sample
     get:
       consumes:
       - application/json
+      parameters:
+      - description: Sample ID
+        in: path
+        name: id
+        required: true
+        type: integer
       produces:
       - application/json
       responses:
