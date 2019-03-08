@@ -42,6 +42,7 @@ cd src; swag init; cd ..
 ```bash
 go run main.go
 ```
+Visit: `http://localhost:8080/swagger/index.html`
 
 ### Setting up postgres in docker
 ```bash
