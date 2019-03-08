@@ -8,6 +8,7 @@ import (
 	// Use the swagger docs
 	_ "../docs"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
@@ -55,6 +56,9 @@ func SetupRouter(cfg config.Configuration) *gin.Engine {
 		sampleRoutes.PUT("/", sample.Update)
 		sampleRoutes.DELETE("/:id", sample.List)
 	}
+
+	// Enable cors
+	router.Use(cors.Default())
 
 	return router
 }

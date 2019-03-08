@@ -9,8 +9,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-var db = database.GetDatabase()
-
 type SampleController struct{}
 
 // List shows a list of samples
@@ -22,12 +20,12 @@ type SampleController struct{}
 // @Success 200 {array} models.SampleModel
 // @Router /samples/ [get]
 func (h SampleController) List(c *gin.Context) {
-	var models []models.SampleModel
-	err := db.Find(&models).Error
-	if err != nil {
+	var m []models.SampleModel
+	var db = database.GetDatabase()
+	if err := db.Find(&m).Error; err != nil {
 		c.AbortWithStatus(http.StatusBadRequest)
 	}
-	c.JSON(http.StatusOK, models)
+	c.JSON(http.StatusOK, m)
 }
 
 // Read returns a single sample by id
@@ -40,13 +38,13 @@ func (h SampleController) List(c *gin.Context) {
 // @Param id path int true "Sample ID"
 // @Router /samples/{id} [get]
 func (h SampleController) Read(c *gin.Context) {
-	var model models.SampleModel
+	var m models.SampleModel
 	id := c.Params.ByName("id")
-	err := db.First(&model, id).Error
-	if err != nil {
+	var db = database.GetDatabase()
+	if err := db.First(&m, id).Error; err != nil {
 		c.AbortWithStatus(http.StatusBadRequest)
 	}
-	c.JSON(http.StatusOK, model)
+	c.JSON(http.StatusOK, m)
 }
 
 // Create stores a sample model
@@ -59,13 +57,13 @@ func (h SampleController) Read(c *gin.Context) {
 // @Param model body models.SampleModel true "Sample Model"
 // @Router /samples/ [post]
 func (h SampleController) Create(c *gin.Context) {
-	var model models.SampleModel
-	c.BindJSON(&model)
-	err := db.Create(&model).Error
-	if err != nil {
+	var m models.SampleModel
+	c.BindJSON(&m)
+	var db = database.GetDatabase()
+	if err := db.Create(&m).Error; err != nil {
 		c.AbortWithStatus(http.StatusBadRequest)
 	}
-	c.JSON(http.StatusOK, model)
+	c.JSON(http.StatusOK, m)
 }
 
 // Update updates a sample model
@@ -78,13 +76,13 @@ func (h SampleController) Create(c *gin.Context) {
 // @Param model body models.SampleModel true "Sample Model"
 // @Router /samples/ [put]
 func (h SampleController) Update(c *gin.Context) {
-	var model models.SampleModel
-	c.BindJSON(&model)
-	err := db.Update(&model).Error
-	if err != nil {
+	var m models.SampleModel
+	c.BindJSON(&m)
+	var db = database.GetDatabase()
+	if err := db.Update(&m).Error; err != nil {
 		c.AbortWithStatus(http.StatusBadRequest)
 	}
-	c.JSON(http.StatusOK, model)
+	c.JSON(http.StatusOK, m)
 }
 
 // Delete removes a sample by id
@@ -98,9 +96,9 @@ func (h SampleController) Update(c *gin.Context) {
 // @Router /samples/{id} [delete]
 func (h SampleController) Delete(c *gin.Context) {
 	id := c.Params.ByName("id")
-	var model models.SampleModel
-	err := db.Where("id = ?", id).Delete(&model).Error
-	if err != nil {
+	var m models.SampleModel
+	var db = database.GetDatabase()
+	if err := db.Where("id = ?", id).Delete(&m).Error; err != nil {
 		c.AbortWithStatus(http.StatusBadRequest)
 	}
 	c.JSON(http.StatusOK, gin.H{})
