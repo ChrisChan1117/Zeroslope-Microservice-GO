@@ -14,15 +14,16 @@ Here is a list of the technologies used in this project:
 ## Endpoints
 Here is an overall layout of what endpoints come with this architecture:
 
-| Method | Route       | Description                                  |
-| ------ | ----------- | -------------------------------------------- |
-| GET    | /health/    | Health check.                                |
-| POST   | /auth/login | Creates a JWT token for access.              |
-| GET    | /sample     | Gets a list of records.                      |
-| GET    | /sample/:id | Gets a record by id.                         |
-| POST   | /sample/    | Creates a record.                            |
-| PUT    | /sample/    | Updates a record.                            |
-| DELETE | /sample/:id | Deletes a record.                            |
+| Method | Route                  | Description                                  |
+| ------ | ---------------------- | -------------------------------------------- |
+| N/A    | /swagger/index.html    | Swagger UI                                   |
+| GET    | /health/               | Health check.                                |
+| POST   | /auth/login            | Creates a JWT token for access.              |
+| GET    | /sample                | Gets a list of records.                      |
+| GET    | /sample/:id            | Gets a record by id.                         |
+| POST   | /sample/               | Creates a record.                            |
+| PUT    | /sample/               | Updates a record.                            |
+| DELETE | /sample/:id            | Deletes a record.                            |
 
 
 ## Development

@@ -5,6 +5,8 @@ import (
 	"../controllers"
 	"../middlewares"
 
+	"net/http"
+
 	// Use the swagger docs
 	_ "../docs"
 
@@ -25,8 +27,8 @@ func SetupRouter(cfg config.Configuration) *gin.Engine {
 
 	// Redirect the root to swagger
 	router.GET("/", func(c *gin.Context) {
-		c.Request.URL.Path = "/swagger/index.html"
-		router.HandleContext(c)
+		c.Redirect(http.StatusMovedPermanently, "/swagger/index.html")
+		c.Abort()
 	})
 
 	// Health endpoint

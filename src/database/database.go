@@ -41,8 +41,8 @@ func GetDatabase() *gorm.DB {
 func Connect(dbinfo string) {
 	db, err = gorm.Open("postgres", dbinfo)
 	if err != nil {
-		log.Println("Failed to connect to database")
-		panic(err)
+		log.Println("Failed to connect to database.")
+		// panic(err)
 	}
 	log.Println("Database connected")
 }

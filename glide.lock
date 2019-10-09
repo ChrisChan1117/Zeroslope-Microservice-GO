@@ -1,5 +1,5 @@
 hash: b24d62da436416cedd9a65bdca502103febd9fd8ae779604f50eb3575279de5d
-updated: 2019-03-06T08:19:31.153819-07:00
+updated: 2019-10-09T12:43:46.001192-06:00
 imports:
 - name: github.com/alecthomas/template
   version: a0175ee3bccc567396460bf5acd36800cb10c49c
@@ -8,14 +8,14 @@ imports:
 - name: github.com/dgrijalva/jwt-go
   version: 06ea1031745cb8b3dab3f6a236daf2b0aa468b7e
 - name: github.com/gin-contrib/cors
-  version: cf4846e6a636a76237a28d9286f163c132e841bc
+  version: 5f50d4fb4e0306dcacc6f8e9bea2dcee784dbbdf
 - name: github.com/gin-contrib/sse
   version: 5545eab6dad3bbbd6c5ae9186383c2a9d23c0dae
 - name: github.com/gin-gonic/gin
-  version: b869fe1415e4b9eb52f247441830d502aece2d4d
+  version: b75d67cd51eb53c3c3a2fc406524c940021ffbda
   subpackages:
   - binding
-  - json
+  - internal/json
   - render
 - name: github.com/go-openapi/jsonpointer
   version: ef5f0afec364d3b9396b7b77b43dbe26bf1f8004
@@ -30,18 +30,21 @@ imports:
   subpackages:
   - proto
 - name: github.com/jinzhu/gorm
-  version: 472c70caa40267cb89fd8facb07fe6454b578626
+  version: 81c17a7e2529c59efc4e74c5b32c1fb71fb12fa2
   subpackages:
   - dialects/postgres
 - name: github.com/jinzhu/inflection
   version: 04140366298a54a039076d798123ffa108fff46c
 - name: github.com/json-iterator/go
   version: 0ff49de124c6f76f8494e194af75bde0f1a49a29
+- name: github.com/KyleBanks/depth
+  version: b7f67b6d8d5f169cc58aa195df333dc0b353d6b3
 - name: github.com/lib/pq
-  version: 4ded0e9383f75c197b3a2aaa6d590ac52df6fd79
+  version: 3427c32cb71afc948325f299f040e53c1dd78979
   subpackages:
   - hstore
   - oid
+  - scram
 - name: github.com/mailru/easyjson
   version: 6243d8e04c3f819e79757e8bc3faa15c3cb27003
   subpackages:
@@ -54,18 +57,16 @@ imports:
   version: bacd9c7ef1dd9b15be4a9909b8ac7a4e313eec94
 - name: github.com/modern-go/reflect2
   version: 94122c33edd36123c84d5368cfb2b69df93a0ec8
-- name: github.com/pkg/errors
-  version: 27936f6d90f9c8e1145f11ed52ffffbfdb9e0af7
 - name: github.com/PuerkitoBio/purell
   version: 44968752391892e1b0d0b821ee79e9a85fa13049
 - name: github.com/PuerkitoBio/urlesc
   version: de5bf2ad457846296e2031421a34e2568e304e35
 - name: github.com/swaggo/gin-swagger
-  version: ea4ea9de0c1dfbdab6e540e7723828953babdf4b
+  version: ddb15761267c07109d8249ad8230df5ecf94c1c7
   subpackages:
   - swaggerFiles
 - name: github.com/swaggo/swag
-  version: d95e114626732976ed73a165365089d6e21986cc
+  version: c9f403a30434dc43903a02f80bcf736f11169a86
 - name: github.com/ugorji/go
   version: e444a5086c436778cf9281a7059a3d58b9e17935
   subpackages:
@@ -99,5 +100,5 @@ imports:
 - name: gopkg.in/go-playground/validator.v8
   version: 5f1438d3fca68893a817e4a66806cea46a9e4ebf
 - name: gopkg.in/yaml.v2
-  version: 51d6538a90f86fe93ac480b35f37b2be17fef232
+  version: f221b8435cfb71e54062f6c6e99e9ade30b124d5
 testImports: []
