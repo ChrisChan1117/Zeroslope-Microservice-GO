@@ -23,6 +23,7 @@ func SetupRouter(cfg config.Configuration) *gin.Engine {
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
 
+	// Allow GinSwagger to handle all swagger-ui in process
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	// Redirect the root to swagger
