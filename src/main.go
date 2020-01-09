@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"./config"
-	"./database"
-	"./router"
+	"github.com/cfryerdev/zeroslope-golang/src/config"
+	"github.com/cfryerdev/zeroslope-golang/src/database"
+	"github.com/cfryerdev/zeroslope-golang/src/router"
 )
 
 // @title ZeroSlope API

@@ -1,14 +1,14 @@
 package router
 
 import (
-	"../config"
-	"../controllers"
-	"../middlewares"
+	"github.com/cfryerdev/zeroslope-golang/src/config"
+	"github.com/cfryerdev/zeroslope-golang/src/controllers"
+	"github.com/cfryerdev/zeroslope-golang/src/middlewares"
 
 	"net/http"
 
 	// Use the swagger docs
-	_ "../docs"
+	_ "github.com/cfryerdev/zeroslope-golang/src/docs"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"

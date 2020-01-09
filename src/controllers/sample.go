@@ -3,8 +3,8 @@ package controllers
 import (
 	"net/http"
 
-	"../database"
-	"../models"
+	"github.com/cfryerdev/zeroslope-golang/src/database"
+	"github.com/cfryerdev/zeroslope-golang/src/models"
 
 	"github.com/gin-gonic/gin"
 )
