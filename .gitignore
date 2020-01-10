@@ -18,7 +18,7 @@
 cmd/zeroslopesvc/zeroslopesvc
 
 # swagger docs
-cmd/docs/*/
+cmd/**/docs/*
 
 # vendor dependencies (managed with glide)
-vendor/*/
+vendor/*
