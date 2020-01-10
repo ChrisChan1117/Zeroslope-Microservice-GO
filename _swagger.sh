@@ -1,3 +1,3 @@
 cd cmd/zeroslopesvc
-swag init
+swag init -parseDependency
 cd ../..

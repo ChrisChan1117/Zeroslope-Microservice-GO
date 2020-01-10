@@ -1,6 +1,6 @@
 #!/bin/bash
 glide install
 cd cmd/zeroslopesvc
-swag init 
+swag init -parseDependency
 go run .
 cd ../..
