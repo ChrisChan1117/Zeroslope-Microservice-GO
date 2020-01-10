@@ -1,4 +1,6 @@
 #!/bin/bash
 glide install
-cd src; swag init; cd ..
-go run src/main.go
+cd cmd/zeroslopesvc
+swag init 
+go run .
+cd ../..

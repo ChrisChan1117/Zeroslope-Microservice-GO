@@ -13,3 +13,7 @@
 
 # Removed debug file
 */debug
+
+# cmd binaries
+cmd/zeroslopesvc
+
