@@ -3,9 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/cfryerdev/zeroslope-golang/src/config"
-	"github.com/cfryerdev/zeroslope-golang/src/database"
-	"github.com/cfryerdev/zeroslope-golang/src/router"
+	"github.com/cfryerdev/zeroslope-golang/pkg/config"
+	"github.com/cfryerdev/zeroslope-golang/pkg/database"
 )
 
 // @title ZeroSlope API
@@ -19,7 +18,7 @@ func main() {
 	cfg := config.LoadConfigFromPath("config.yaml")
 
 	fmt.Println(">> Loading routes ...")
-	router := router.SetupRouter(cfg)
+	router := SetupRouter(cfg)
 
 	fmt.Println(">> Connecting to database ...")
 	database.Init(cfg)

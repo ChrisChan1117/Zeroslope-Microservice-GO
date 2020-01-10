@@ -5,8 +5,8 @@ import (
 	"log"
 	"strconv"
 
-	"github.com/cfryerdev/zeroslope-golang/src/config"
-	"github.com/cfryerdev/zeroslope-golang/src/models"
+	"github.com/cfryerdev/zeroslope-golang/pkg/config"
+	"github.com/cfryerdev/zeroslope-golang/pkg/models"
 	gorm "github.com/jinzhu/gorm"
 
 	// Get the guts for postgres

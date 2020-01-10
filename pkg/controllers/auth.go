@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/cfryerdev/zeroslope-golang/src/models"
+	"github.com/cfryerdev/zeroslope-golang/pkg/models"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
