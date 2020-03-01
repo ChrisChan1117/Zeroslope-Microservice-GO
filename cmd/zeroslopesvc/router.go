@@ -8,7 +8,7 @@ import (
 	"net/http"
 
 	// Use the swagger docs
-	_ "github.com/cfryerdev/zeroslope-golang/cmd/zeroslopesvc/docs"
+	_ "github.com/chelium/zeroslope-golang/cmd/zeroslopesvc/docs"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
