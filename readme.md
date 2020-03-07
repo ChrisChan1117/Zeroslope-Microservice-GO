@@ -5,7 +5,7 @@ Recently updated to reflect changes in GO 1.13.X.
 
 ## Technologies
 Here is a list of the technologies used in this project:
-* We use DEP for package management.
+* We use MODULES for package management.
 * We use SWAG for swagger generation.
 * We use DLV for Debugging in VSCODE
 * We use GIN for http routing.
@@ -33,7 +33,7 @@ Currently I write my golang in VSCODE and use the following commands:
 
 ### Installing dependencies
 ```bash
-dep ensure
+go mod vendor
 ```
 
 ### Updating swagger docs
