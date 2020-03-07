@@ -1,5 +1,5 @@
 #!/bin/bash
-glide install
+dep ensure
 cd cmd/zeroslopesvc
 swag init -parseDependency
 go run .
